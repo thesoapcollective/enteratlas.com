@@ -7,7 +7,7 @@ $lato-font-family: 'lato', Helvetica, sans-serif;
 
 html {
   font-family: $lato-font-family;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
@@ -59,6 +59,16 @@ article {
   align-items: center;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
 .font-lato-300 {
   font-family: $lato-font-family;
   font-weight: 300;
@@ -66,18 +76,97 @@ article {
 
 $atlas-width: 588px;
 $atlas-height: 70px;
-.logo {
+.page-logo {
   @include text-overflow;
   width: $atlas-width;
   height: $atlas-height;
-  display: inline-block;
+  margin: 0 auto;
+  display: block;
   background-image: url('../images/atlas_logo.png');
   background-size: $atlas-width $atlas-height;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-.container {
+.page-container {
+  width: 100%;
+  max-width: 640px;
   margin: 0 auto;
+  padding: 0 36px;
   display: block;
+}
+
+.page-copy {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 18px;
+  padding-right: 18px;
+  display: block;
+}
+
+.subscribe-container {
+  margin-top: 36px;
+
+  #mc_embed_signup {
+    background: transparent;
+    font-family: $lato-font-family;
+    font-weight: 300;
+  }
+
+  #mc_embed_signup_scroll {
+    text-align: center;
+  }
+
+  #mc_embed_signup input.email,
+  #mc_embed_signup input.button {
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: $lato-font-family;
+    font-weight: 300;
+  }
+
+  #mc_embed_signup input.email {
+    color: #000;
+  }
+}
+
+.page-footer {
+  margin-top: 36px;
+  font-size: 0.666rem;
+}
+
+@media only screen and (max-width: 639px),
+       only screen and (max-height: 499px) {
+  article {
+    padding: 36px 0;
+    display: block;
+    position: static;
+  }
+}
+
+
+@media only screen and (max-width: 639px) {
+  $responsive-max-logo-width: 280px;
+  .page-logo {
+    $atlas-height-r: $responsive-max-logo-width * $atlas-height / $atlas-width;
+    width: $responsive-max-logo-width;
+    height: $atlas-height-r;
+    background-size: $responsive-max-logo-width $atlas-height-r;
+  }
+
+  .page-container {
+    padding-left: 9px;
+    padding-right: 9px;
+    font-size: 0.888rem;
+  }
+}
+
+@media only screen and (max-height: 499px) {
+  body,
+  article {
+    height: auto;
+  }
 }
