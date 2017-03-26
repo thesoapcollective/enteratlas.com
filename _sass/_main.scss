@@ -1,4 +1,4 @@
-$lato-font-family: 'lato', Helvetica, sans-serif;
+$font-family: 'brandon-grotesque', Helvetica, sans-serif;
 
 * {
   box-sizing: border-box;
@@ -6,7 +6,7 @@ $lato-font-family: 'lato', Helvetica, sans-serif;
 }
 
 html {
-  font-family: $lato-font-family;
+  font-family: $font-family;
   font-size: 18px;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
@@ -69,30 +69,33 @@ a {
   }
 }
 
-.font-lato-300 {
-  font-family: $lato-font-family;
-  font-weight: 300;
-}
-
-$atlas-width: 588px;
-$atlas-height: 70px;
+$atlas-width: 1200px;
+$atlas-height: 289px;
+$atlas-width-adj: 800px;
+$atlas-height-adj: $atlas-width-adj * $atlas-height / $atlas-width;
 .page-logo {
   @include text-overflow;
-  width: $atlas-width;
-  height: $atlas-height;
+  width: $atlas-width-adj;
+  height: $atlas-height-adj;
   margin: 0 auto;
   display: block;
   background-image: url('../images/atlas_logo.png');
-  background-size: $atlas-width $atlas-height;
+  background-size: $atlas-width-adj $atlas-height-adj;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 .page-container {
   width: 100%;
-  max-width: 640px;
   margin: 0 auto;
   padding: 0 36px;
+  display: block;
+}
+
+.page-inner {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
   display: block;
 }
 
@@ -105,43 +108,138 @@ $atlas-height: 70px;
   display: block;
 }
 
+.watch-trailer-btn {
+  margin: 0 auto;
+  padding: 18px 43px 16px 24px;
+  display: inline-block;
+  background: url('../images/arrow_right.png') no-repeat;
+  background-position: right 18px center;
+  background-size: 13px 15px;
+  border: 1px solid #fff;
+  border-radius: 60px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .subscribe-container {
   margin-top: 36px;
 
   #mc_embed_signup {
     background: transparent;
-    font-family: $lato-font-family;
-    font-weight: 300;
+    font-family: $font-family;
   }
 
   #mc_embed_signup_scroll {
     text-align: center;
   }
 
+  #mc_embed_signup label {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
   #mc_embed_signup input.email,
   #mc_embed_signup input.button {
-    width: 100%;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: $lato-font-family;
-    font-weight: 300;
+    min-width: 0;
+    min-height: 0;
+    height: 40px;
+    line-height: 1;
+    margin: 0;
+    padding: 0 18px;
+    display: inline-block;
+    font-family: $font-family;
+    font-size: 1rem;
+    color: #fff;
   }
 
   #mc_embed_signup input.email {
-    color: #000;
+    max-width: 300px;
+    padding-right: 48px;
+    background: none;
+    border: 1px solid #fff;
+    border-right: none;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+  }
+
+  #mc_embed_signup input.button {
+    width: auto;
+    margin-left: -30px;
+    padding-top: 2px;
+    padding-left: 24px;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 60px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #fff;
+  }
+  :-ms-input-placeholder {
+    color: #fff;
+  }
+  ::-moz-placeholder {
+    color: #fff;
+  }
+  :-moz-placeholder {
+    color: #fff;
   }
 }
 
-.page-footer {
-  margin-top: 36px;
-  font-size: 0.666rem;
+.page-footer { }
+
+.soap-logo,
+.oculus-logo {
+  @include text-overflow;
+  display: block;
+  position: absolute;
+  bottom: 18px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+$soap-width: 75px;
+$soap-height: 30px;
+.soap-logo {
+  width: $soap-width;
+  height: $soap-height;
+  right: 18px;
+  background-image: url('../images/soap_logo.png');
+  background-size: $soap-width $soap-height;
+}
+
+$oculus-width: 110px;
+$oculus-height: 24px;
+.oculus-logo {
+  width: $oculus-width;
+  height: $oculus-height;
+  left: 18px;
+  background-image: url('../images/oculus_logo.png');
+  background-size: $oculus-width $oculus-height;
+
+}
+
+@media only screen and (max-width: 871px) {
+  $responsive-max-logo-width: 640px - 72px;
+  .page-logo {
+    $atlas-height-r: $responsive-max-logo-width * $atlas-height / $atlas-width;
+    width: $responsive-max-logo-width;
+    height: $atlas-height-r;
+    background-size: $responsive-max-logo-width $atlas-height-r;
+  }
 }
 
 @media only screen and (max-width: 639px),
-       only screen and (max-height: 499px) {
+       only screen and (max-height: 567px) {
   article {
-    padding: 36px 0;
+    padding: 36px 0 18px;
     display: block;
     position: static;
   }
@@ -149,7 +247,11 @@ $atlas-height: 70px;
 
 
 @media only screen and (max-width: 639px) {
-  $responsive-max-logo-width: 280px;
+  html {
+    font-size: 14px;
+  }
+
+  $responsive-max-logo-width: 300px;
   .page-logo {
     $atlas-height-r: $responsive-max-logo-width * $atlas-height / $atlas-width;
     width: $responsive-max-logo-width;
@@ -160,13 +262,30 @@ $atlas-height: 70px;
   .page-container {
     padding-left: 9px;
     padding-right: 9px;
-    font-size: 0.888rem;
+  }
+
+  #mc_embed_signup input.button {
+    padding-top: 0;
   }
 }
 
-@media only screen and (max-height: 499px) {
+@media only screen and (max-height: 567px) {
   body,
   article {
     height: auto;
+  }
+
+  .page-footer {
+    width: 100%;
+    max-width: 640px;
+    height: 30px;
+    margin: 36px auto 0;
+    display: block;
+    position: relative;
+  }
+
+  .soap-logo,
+  .oculus-logo {
+    bottom: 0;
   }
 }

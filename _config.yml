@@ -1,8 +1,9 @@
 url: "http://www.enteratlas.com" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
 title: Atlas
-description: "An original science fiction episodic VR saga set in a world beyond imagination. A project by The Soap Collective, a next-generation creative agency."
+description: "Atlas is a groundbreaking episodic VR adventure that sets users on a quest to uncover the mysteries of a lost civilization. Fast-paced vehicle travel and puzzle-driven exploration converge in an abandoned land from the distant-future. A project by The Soap Collective."
 google_analytics_id: UA-11359166-9
+typekit_id: mwa0zoy
 
 # Build settings
 markdown: kramdown
